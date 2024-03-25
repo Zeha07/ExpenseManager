@@ -1,5 +1,7 @@
 package com.expensemanager.expensemanager;
 
+import com.expensemanager.expensemanager.model.Item;
+import com.expensemanager.expensemanager.service.ItemService;
 import com.expensemanager.expensemanager.service.headservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,8 @@ public class ExpenseManagerApplication implements CommandLineRunner {
     @Autowired
     private headservice heads;
 
+    @Autowired
+    private ItemService items;
     public static void main(String[] args) {
         SpringApplication.run(ExpenseManagerApplication.class, args);
 
@@ -20,7 +24,10 @@ public class ExpenseManagerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.heads.createNewHead("Fest");
+        Item i = new Item();
+        i.setItemname("Holi Event");
+
+        this.items.addItem(i,"Electronics");
         System.out.println("code finished !!!");
     }
 }
