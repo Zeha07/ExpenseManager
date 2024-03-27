@@ -6,6 +6,8 @@ import com.expensemanager.expensemanager.service.headservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class headServiceImpl implements headservice {
@@ -40,5 +42,12 @@ public class headServiceImpl implements headservice {
         }
 
         return worked;
+    }
+
+    @Override
+    public List<String> getAllheads() {
+
+        List<String> l = headr.findSortedHeadById();
+        return l;
     }
 }

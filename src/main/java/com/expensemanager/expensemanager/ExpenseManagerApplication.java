@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.*;
+import java.util.List;
+
 @SpringBootApplication
 public class ExpenseManagerApplication implements CommandLineRunner {
 
@@ -24,10 +26,11 @@ public class ExpenseManagerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Item i = new Item();
-        i.setItemname("Holi Event");
+        List<String> l = items.getAllItems(1);
 
-        this.items.addItem(i,"Electronics");
+        for(String s : l){
+            System.out.println(s);
+        }
         System.out.println("code finished !!!");
     }
 }
