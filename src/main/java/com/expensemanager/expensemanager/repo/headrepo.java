@@ -16,6 +16,9 @@ public interface headrepo extends JpaRepository<head,Long> {
     boolean existsByHeadId(long hid);
 
 
+    List<head> findAll();
+
+
 
 
 }

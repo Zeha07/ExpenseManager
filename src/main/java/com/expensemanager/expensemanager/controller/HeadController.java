@@ -4,10 +4,10 @@ package com.expensemanager.expensemanager.controller;
 import com.expensemanager.expensemanager.model.head;
 import com.expensemanager.expensemanager.repo.headrepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/director/Head")
@@ -35,6 +35,18 @@ public class HeadController {
 
         h = headr.findByHeadName(headname);
         return (h!=null);
+    }
+
+
+    @GetMapping("/getHeads")
+    List<String> getAllHeads(){
+        List<String> l = new ArrayList<>();
+        List<head> h = headr.findAll();
+        for( head H : h){
+            l.add(H.getHeadName());
+        }
+
+        return l;
     }
 
 }
